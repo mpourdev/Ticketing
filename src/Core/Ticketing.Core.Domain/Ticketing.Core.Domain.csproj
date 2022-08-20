@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Shared\Models\" />
+    <Folder Include="Tickets\Data\" />
+    <Folder Include="Tickets\Dtos\" />
+  </ItemGroup>
+
 </Project>

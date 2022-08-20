@@ -21,6 +21,13 @@ public class TicketStatusHistory
 
     }
 
+    public TicketStatusHistory(TicketStatus status)
+    {
+        //Id = Guid.NewGuid();
+        Status = status;
+        DateTime = DateTime.Now;
+    }
+
     #endregion
 
     #region Methods

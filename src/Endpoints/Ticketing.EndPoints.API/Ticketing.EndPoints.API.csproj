@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\Ticketing.Core.ApplicationServices\Ticketing.Core.ApplicationServices.csproj" />
     <ProjectReference Include="..\..\Core\Ticketing.Core.Domain\Ticketing.Core.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructures\Data\Ticketing.Infrastructures.Data.SqlServer\Ticketing.Infrastructures.Data.SqlServer.csproj" />
