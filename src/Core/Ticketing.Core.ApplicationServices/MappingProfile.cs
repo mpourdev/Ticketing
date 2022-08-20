@@ -10,6 +10,7 @@ public class MappingProfile : Profile
     {
         CreateMap<Ticket, TicketDetailDto>();
         CreateMap<Ticket, TicketDto>();
+        //.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email.Value));
 
         CreateMap<TicketStatusHistory, TicketStatusHistoryDto>();
     }

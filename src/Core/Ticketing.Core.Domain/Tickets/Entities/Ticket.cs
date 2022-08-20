@@ -1,4 +1,5 @@
 ﻿using Ticketing.Core.Domain.Shared.Exceptions;
+using Ticketing.Core.Domain.Shared.ValueObjects;
 using Ticketing.Core.Domain.Tickets.Enums;
 
 namespace Ticketing.Core.Domain.Tickets.Entities;
@@ -11,7 +12,7 @@ public class Ticket
     public long Id { get; private set; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
-    public string Email { get; private set; }
+    public Email Email { get; private set; }
     public string Title { get; private set; }
     public string Message { get; private set; }
     public DateTime CreatedOn { get; private set; }
@@ -39,7 +40,7 @@ public class Ticket
         //Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
-        Email = email;
+        Email = Email.FromString(email);
         Title = title;
         Message = message;
         CreatedOn = DateTime.Now;
