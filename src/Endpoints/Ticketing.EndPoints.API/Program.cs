@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Ticketing.Core.ApplicationServices;
 using Ticketing.Core.ApplicationServices.IServices;
 using Ticketing.Core.ApplicationServices.Services;
 using Ticketing.Core.Domain.Tickets.Data;
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<TicketingDbContext>(c =>
 builder.Services.AddScoped<ITicketRepository, EfTicketRepository>();
 builder.Services.AddScoped<ITicketService, TicketService>();
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

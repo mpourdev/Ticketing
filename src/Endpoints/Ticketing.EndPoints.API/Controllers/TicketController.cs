@@ -16,10 +16,18 @@ namespace Ticketing.EndPoints.API.Controllers
             _ticketService = ticketService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetAll([FromQuery] PaginationModel model)
+        [HttpGet]
+        public async Task<IActionResult> GetAllPaginated([FromQuery] PaginationModel model)
         {
             var result = await _ticketService.GetAll(model);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id:long}")]
+        public async Task<IActionResult> GetById(long id)
+        {
+            var result = await _ticketService.GetById(id);
 
             return Ok(result);
         }

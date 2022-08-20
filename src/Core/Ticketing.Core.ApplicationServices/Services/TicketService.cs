@@ -34,6 +34,12 @@ public class TicketService : ITicketService
         };
     }
 
+    public async Task<TicketDetailDto> GetById(long id)
+    {
+        var ticket = await _ticketRepository.GetByIdAsync(id);
+        return _mapper.Map<TicketDetailDto>(ticket);
+    }
+
     public async Task Create(CreateTicket command)
     {
         var ticket = new Ticket(
