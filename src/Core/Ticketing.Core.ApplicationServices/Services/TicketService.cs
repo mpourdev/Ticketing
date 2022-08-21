@@ -46,7 +46,7 @@ public class TicketService : ITicketService
             command.FirstName,
             command.LastName,
             command.Email,
-            command.Title,
+            command.Subject,
             command.Message
         );
         await _ticketRepository.InsertAsync(ticket);
@@ -60,7 +60,7 @@ public class TicketService : ITicketService
         if (ticket is null)
             throw new NotFoundException();
 
-        ticket.ChangeContent(command.Title, command.Message);
+        ticket.ChangeContent(command.Subject, command.Message);
 
         _ticketRepository.Update(ticket);
         await _ticketRepository.CommitAsync();

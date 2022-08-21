@@ -13,7 +13,7 @@ public class Ticket
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public Email Email { get; private set; }
-    public string Title { get; private set; }
+    public string Subject { get; private set; }
     public string Message { get; private set; }
     public DateTime CreatedOn { get; private set; }
     public TicketStatus Status { get; private set; }
@@ -35,13 +35,13 @@ public class Ticket
 
     }
 
-    public Ticket(string firstName, string lastName, string email, string title, string message)
+    public Ticket(string firstName, string lastName, string email, string subject, string message)
     {
         //Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         Email = Email.FromString(email);
-        Title = title;
+        Subject = subject;
         Message = message;
         CreatedOn = DateTime.Now;
         Status = TicketStatus.Opened;
@@ -56,21 +56,21 @@ public class Ticket
 
     #region Methods
 
-    public void ChangeContent(string title, string message)
+    public void ChangeContent(string subject, string message)
     {
-        //if (string.IsNullOrWhiteSpace(title))
-        //    throw new ArgumentNullException(nameof(title));
+        //if (string.IsNullOrWhiteSpace(subject))
+        //    throw new ArgumentNullException(nameof(subject));
 
         //if (string.IsNullOrWhiteSpace(message))
         //    throw new ArgumentNullException(nameof(message));
 
-        //if (title.Length > 100)
-        //    throw new ArgumentOutOfRangeException(nameof(title));
+        //if (subject.Length > 100)
+        //    throw new ArgumentOutOfRangeException(nameof(subject));
 
-        //if (title.Length > 100)
+        //if (message.Length > 100)
         //    throw new ArgumentOutOfRangeException(nameof(message));
 
-        Title = title;
+        Subject = subject;
         Message = message;
     }
 
