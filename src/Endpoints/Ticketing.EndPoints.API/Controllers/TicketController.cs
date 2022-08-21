@@ -6,7 +6,7 @@ using Ticketing.Core.Domain.Tickets.Commands;
 namespace Ticketing.EndPoints.API.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class TicketController : ControllerBase
     {
         private readonly ITicketService _ticketService;
@@ -48,18 +48,18 @@ namespace Ticketing.EndPoints.API.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> ChangeToInProgress(ChangeTicketToInProgress command)
+        [HttpPut("{id:long}")]
+        public async Task<IActionResult> ChangeToInProgress(long id)
         {
-            await _ticketService.ChangeToInProgress(command);
+            await _ticketService.ChangeToInProgress(new ChangeTicketToInProgress(id));
 
             return Ok();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> ChangeToResolved(ChangeTicketToResolved command)
+        [HttpPut("{id:long}")]
+        public async Task<IActionResult> ChangeToResolved(long id)
         {
-            await _ticketService.ChangeToResolved(command);
+            await _ticketService.ChangeToResolved(new ChangeTicketToResolved(id));
 
             return Ok();
         }

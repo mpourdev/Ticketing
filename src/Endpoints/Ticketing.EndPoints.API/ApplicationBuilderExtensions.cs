@@ -13,5 +13,16 @@ namespace Ticketing.EndPoints.API
         {
             application.UseExceptionHandler(ab => ApiExceptionHandler.DeveloperHandler(ab, logger));
         }
+
+        public static void AddDefaultCors(this IServiceCollection services, IConfiguration configuration)
+        {
+            var allowedHosts = configuration["AllowedHosts"].Split(",");
+            services.AddCors(o => o.AddDefaultPolicy(builder =>
+            {
+                builder.WithOrigins(allowedHosts)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            }));
+        }
     }
 }

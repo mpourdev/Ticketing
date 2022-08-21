@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TicketingDbContext>(c =>
     c.UseSqlServer(builder.Configuration.GetConnectionString("TicketingConnection")));
 
+builder.Services.AddDefaultCors(builder.Configuration);
 
 builder.Services.AddScoped<ITicketRepository, EfTicketRepository>();
 builder.Services.AddScoped<ITicketService, TicketService>();
@@ -42,6 +43,7 @@ else
     app.UseCustomExceptionHandler(logger);
 }
 
+app.UseCors();
 
 app.UseHttpsRedirection();
 

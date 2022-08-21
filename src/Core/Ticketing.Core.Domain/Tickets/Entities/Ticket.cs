@@ -64,11 +64,14 @@ public class Ticket
         //if (string.IsNullOrWhiteSpace(message))
         //    throw new ArgumentNullException(nameof(message));
 
-        //if (subject.Length > 100)
+        //if (subject.Length > 200)
         //    throw new ArgumentOutOfRangeException(nameof(subject));
 
-        //if (message.Length > 100)
+        //if (message.Length > 1000)
         //    throw new ArgumentOutOfRangeException(nameof(message));
+
+        if (Status != TicketStatus.Opened)
+            throw new WrongStatusException();
 
         Subject = subject;
         Message = message;

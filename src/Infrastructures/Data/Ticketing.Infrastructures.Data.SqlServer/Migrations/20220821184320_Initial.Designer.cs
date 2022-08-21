@@ -12,7 +12,7 @@ using Ticketing.Infrastructures.Data.SqlServer;
 namespace Ticketing.Infrastructures.Data.SqlServer.Migrations
 {
     [DbContext(typeof(TicketingDbContext))]
-    [Migration("20220821115930_Initial")]
+    [Migration("20220821184320_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,16 +52,16 @@ namespace Ticketing.Infrastructures.Data.SqlServer.Migrations
 
                     b.Property<string>("Message")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint");
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 

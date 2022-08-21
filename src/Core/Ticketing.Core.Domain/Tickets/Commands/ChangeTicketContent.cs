@@ -7,9 +7,9 @@ public class ChangeTicketContent
     [JsonConstructor]
     public ChangeTicketContent(long id, string subject, string message)
     {
+        Id = id;
         Subject = subject;
         Message = message;
-        Id = id;
     }
 
     public long Id { get; }
