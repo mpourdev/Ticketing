@@ -27,7 +27,7 @@ internal static class ApiExceptionHandler
                 }
                 else
                 {
-                    await context.Response.WriteAsync(exception.Message, Encoding.UTF8);
+                    await context.Response.WriteAsync(exception?.Message?? "Sorry we could not complete your request.", Encoding.UTF8);
                 }
             }
 

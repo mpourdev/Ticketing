@@ -1,10 +1,11 @@
-﻿using Ticketing.Core.Domain.Shared.Exceptions;
+﻿using Ticketing.Core.Domain.Shared;
+using Ticketing.Core.Domain.Shared.Exceptions;
 using Ticketing.Core.Domain.Shared.ValueObjects;
 using Ticketing.Core.Domain.Tickets.Enums;
 
 namespace Ticketing.Core.Domain.Tickets.Entities;
 
-public class Ticket
+public class Ticket : IAggregateRoot
 {
 
     #region Fields

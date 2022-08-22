@@ -48,7 +48,7 @@ namespace Ticketing.EndPoints.API.Controllers
             return Ok();
         }
 
-        [HttpPut("{id:long}")]
+        [HttpPatch("{id:long}")]
         public async Task<IActionResult> ChangeToInProgress(long id)
         {
             await _ticketService.ChangeToInProgress(new ChangeTicketToInProgress(id));
@@ -56,7 +56,7 @@ namespace Ticketing.EndPoints.API.Controllers
             return Ok();
         }
 
-        [HttpPut("{id:long}")]
+        [HttpPatch("{id:long}")]
         public async Task<IActionResult> ChangeToResolved(long id)
         {
             await _ticketService.ChangeToResolved(new ChangeTicketToResolved(id));

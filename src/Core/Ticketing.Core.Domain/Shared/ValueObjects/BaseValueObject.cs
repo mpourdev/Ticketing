@@ -6,7 +6,7 @@
 
         public bool Equals(TValueObject other) => this == other;
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             if (obj is TValueObject otherObject)
             {
