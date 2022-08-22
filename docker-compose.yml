@@ -1,0 +1,30 @@
+version: "3.4"
+services:
+  api:
+    container_name: api
+    # network_mode: "host"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - ticketing-network
+
+  db:
+    container_name: db
+    # network_mode: "host"
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "12345689@a"
+      ACCEPT_EULA: "Y"
+    networks:
+      - ticketing-network
+
+networks:
+  ticketing-network:
+    name: ticketing-net
