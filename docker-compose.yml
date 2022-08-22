@@ -1,8 +1,9 @@
 version: "3.4"
 services:
-  api:
-    container_name: api
+  api-service:
+    container_name: api-service
     # network_mode: "host"
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
