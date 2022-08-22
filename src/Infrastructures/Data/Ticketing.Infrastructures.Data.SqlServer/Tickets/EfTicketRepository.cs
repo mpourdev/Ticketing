@@ -18,6 +18,7 @@ public class EfTicketRepository : ITicketRepository
     {
         var total = await _dbContext.Tickets.LongCountAsync();
         var list = await _dbContext.Tickets.AsNoTracking()
+            .OrderBy(t => t.CreatedOn)
             .Skip(model.PageIndex * model.PageSize)
             .Take(model.PageSize)
             .ToListAsync();
