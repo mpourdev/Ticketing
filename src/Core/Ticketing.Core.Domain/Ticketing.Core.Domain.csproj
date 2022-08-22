@@ -10,6 +10,11 @@
     <Folder Include="Shared\Models\" />
     <Folder Include="Tickets\Data\" />
     <Folder Include="Tickets\Dtos\" />
+    <Folder Include="Tickets\Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
   </ItemGroup>
 
 </Project>

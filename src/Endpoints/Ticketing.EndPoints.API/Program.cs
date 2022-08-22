@@ -1,8 +1,11 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Ticketing.Core.ApplicationServices;
 using Ticketing.Core.ApplicationServices.IServices;
 using Ticketing.Core.ApplicationServices.Services;
 using Ticketing.Core.Domain.Tickets.Data;
+using Ticketing.Core.Domain.Tickets.Validators;
 using Ticketing.EndPoints.API;
 using Ticketing.Infrastructures.Data.SqlServer;
 using Ticketing.Infrastructures.Data.SqlServer.Tickets;
@@ -22,6 +25,9 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateTicketValidator>();
 
 var app = builder.Build();
 

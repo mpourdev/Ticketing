@@ -20,8 +20,15 @@ internal static class ApiExceptionHandler
             }
             else
             {
-                context.Response.StatusCode = GeneralException.CODE;
-                await context.Response.WriteAsync("Sorry we could not complete your request.", Encoding.UTF8);
+                if (context.Response.StatusCode == 500)
+                {
+                    context.Response.StatusCode = GeneralException.CODE;
+                    await context.Response.WriteAsync("Sorry we could not complete your request.", Encoding.UTF8);
+                }
+                else
+                {
+                    await context.Response.WriteAsync(exception.Message, Encoding.UTF8);
+                }
             }
 
             logger.LogError($"Exception: {exception}");
