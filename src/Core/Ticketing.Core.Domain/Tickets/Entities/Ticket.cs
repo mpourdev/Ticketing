@@ -38,9 +38,21 @@ public class Ticket : IAggregateRoot
 
     public Ticket(string firstName, string lastName, string email, string subject, string message)
     {
+        if (string.IsNullOrWhiteSpace(firstName) || firstName.Length > 50)
+            throw new ArgumentException($"{nameof(subject)} is invalid.");
+
+        if (string.IsNullOrWhiteSpace(lastName) || lastName.Length > 50)
+            throw new ArgumentException($"{nameof(message)} is invalid.");
+
+        if (string.IsNullOrWhiteSpace(subject) || subject.Length > 200)
+            throw new ArgumentException($"{nameof(subject)} is invalid.");
+
+        if (string.IsNullOrWhiteSpace(message) || message.Length > 1000)
+            throw new ArgumentException($"{nameof(message)} is invalid.");
+
         //Id = Guid.NewGuid();
-        FirstName = firstName;
-        LastName = lastName;
+        FirstName = firstName.Trim();
+        LastName = lastName.Trim();
         Email = Email.FromString(email);
         Subject = subject;
         Message = message;
@@ -59,17 +71,11 @@ public class Ticket : IAggregateRoot
 
     public void ChangeContent(string subject, string message)
     {
-        //if (string.IsNullOrWhiteSpace(subject))
-        //    throw new ArgumentNullException(nameof(subject));
+        if (string.IsNullOrWhiteSpace(subject) || subject.Length > 200)
+            throw new ArgumentException($"{nameof(subject)} is invalid.");
 
-        //if (string.IsNullOrWhiteSpace(message))
-        //    throw new ArgumentNullException(nameof(message));
-
-        //if (subject.Length > 200)
-        //    throw new ArgumentOutOfRangeException(nameof(subject));
-
-        //if (message.Length > 1000)
-        //    throw new ArgumentOutOfRangeException(nameof(message));
+        if (string.IsNullOrWhiteSpace(message) || message.Length > 1000)
+            throw new ArgumentException($"{nameof(message)} is invalid.");
 
         if (Status != TicketStatus.Opened)
             throw new WrongStatusException();
